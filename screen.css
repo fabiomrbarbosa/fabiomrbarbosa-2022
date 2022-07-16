@@ -84,8 +84,6 @@ main img {
 
 img.headshot {
 	display: block;
-	filter: saturate(0) brightness(1.2);
-	mix-blend-mode: multiply;
 	margin: 0 auto calc(4 * var(--unit-line-height));
 	width: 80%;
 	max-width: 28em;
