@@ -1,0 +1,275 @@
+/* =============================================================================
+CORE
+============================================================================= */
+
+/* -----------------------------------------------------------------------------
+Variables
+----------------------------------------------------------------------------- */
+
+:root {
+	--unit-maxwidth-text: 35em;
+	--unit-line-height: 1.5em;
+	--unit-font-large: 1.4rem;
+	--color-bg: #f5e5dd;
+	--color-accent: #cd5e5e;
+	--color-fg: #2d304b;
+	--color-fg-alt: #666988;
+}
+
+/* -----------------------------------------------------------------------------
+Load fonts
+----------------------------------------------------------------------------- */
+
+@font-face {
+	font-family: "p22_underground";
+	src: url("p22_underground_light.woff2") format("woff2"),
+		url("p22_underground_light.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* -----------------------------------------------------------------------------
+Body and Layout
+----------------------------------------------------------------------------- */
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: "p22_underground", -apple-system, BlinkMacSystemFont, Segoe UI,
+		Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+	font-size: 16px;
+	line-height: var(--unit-line-height);
+	margin: 0;
+	font-feature-settings: "kern";
+	/* font-feature-settings: "kern","liga","clig","ss05","ss07"; */
+	/*
+  ss02 - alt J
+  ss03 - alt M
+  ss04 - alt a
+  ss05 - alt j
+  ss06 - alt l
+  ss07 - alt t
+  */
+}
+
+@media (min-width: 1000px) {
+	html {
+		font-size: 17px;
+	}
+}
+
+body {
+	background-color: var(--color-bg);
+	color: var(--color-fg);
+	transition: background-color 0.6s ease;
+	margin: 0 calc(1 * var(--unit-line-height));
+}
+
+main {
+	min-height: calc(100vh - 19 * var(--unit-line-height));
+}
+
+main svg,
+main img {
+	width: 100%;
+	height: auto;
+}
+
+.split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+img.headshot {
+	display: block;
+	filter: saturate(0) brightness(1.2);
+	mix-blend-mode: multiply;
+	margin: 0 auto calc(4 * var(--unit-line-height));
+	width: 80%;
+	max-width: 28em;
+}
+
+svg path {
+	fill: var(--color-accent);
+}
+
+img.dim {
+	filter: brightness(0.95);
+}
+
+@media (min-width: 1000px) {
+	main {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: var(--unit-line-height);
+	}
+	svg.headshot {
+		margin: 0 auto;
+	}
+
+	div.capabilities {
+		margin-left: 50%;
+		display: block;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+Typography
+----------------------------------------------------------------------------- */
+
+h1,
+h2 {
+	font-weight: 400;
+}
+
+h1 {
+	font-size: var(--unit-font-large);
+	margin: 0 0 calc(2 * var(--unit-line-height));
+	letter-spacing: 0;
+}
+
+h2 {
+	font-size: 1.35rem;
+	margin: var(--unit-line-height) 0 0;
+	color: var(--color-fg-alt);
+	text-transform: lowercase;
+	font-variant: small-caps;
+	letter-spacing: 0.05rem;
+}
+
+a {
+	transition: opacity 0.3s ease;
+	text-decoration: none;
+	color: var(--color-fg);
+	border-color: var(--color-fg-alt);
+}
+
+a.action {
+	/* text-transform: lowercase;
+  font-feature-settings: "smcp"; */
+	border: none;
+}
+
+a.action:after {
+	display: inline-block;
+	margin-left: 0.6em;
+	content: "\2192";
+	font-size: 76%;
+}
+
+p {
+	margin: 0 0 1rem;
+	max-width: var(--unit-maxwidth-text);
+}
+
+p a,
+li a {
+	border-bottom: 1px solid var(--color-fg-alt);
+}
+
+a:hover {
+	opacity: 0.5;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul li.gap {
+	margin-top: var(--unit-line-height);
+}
+
+div.clientlist ul {
+	column-count: 2;
+}
+
+/* =============================================================================
+NAVIGATION
+============================================================================= */
+
+/* -----------------------------------------------------------------------------
+Header
+----------------------------------------------------------------------------- */
+
+body > header {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: var(--unit-line-height);
+	margin-bottom: calc(5 * var(--unit-line-height));
+	line-height: var(--unit-line-height);
+	padding-top: var(--unit-line-height);
+}
+
+body > header svg {
+	width: 3.5rem;
+	display: block;
+}
+
+a.logo {
+	width: 4rem;
+}
+
+body > header .title {
+	font-size: 1.35rem;
+	text-transform: lowercase;
+	font-variant: small-caps;
+	margin: 0;
+	letter-spacing: 0.05rem;
+}
+
+/* -----------------------------------------------------------------------------
+Footer
+----------------------------------------------------------------------------- */
+
+footer {
+	line-height: var(--unit-line-height);
+	display: grid;
+	grid-gap: var(--unit-line-height);
+	grid-template-columns: repeat(2, 1fr);
+	padding-top: calc(4 * var(--unit-line-height));
+	padding-bottom: var(--unit-line-height);
+}
+
+footer > div:first-child,
+footer > div:last-child {
+	grid-column: 1 / span 2;
+}
+
+footer div.copyright {
+	font-size: 14px;
+}
+
+@media (min-width: 1000px) {
+	footer {
+		grid-template-columns: repeat(4, 1fr);
+	}
+	footer div:last-child {
+		grid-column-start: 3;
+	}
+}
+
+/* -----------------------------------------------------------------------------
+Colophon
+----------------------------------------------------------------------------- */
+
+.colophon {
+	background-color: #2d304b;
+	color: #e6b8b8;
+}
+
+.colophon a {
+	color: #e6b8b8;
+	border-color: #8e6c6c;
+}
+
+.colophon main {
+	align-items: center;
+}
+
+body.colophon > header svg path {
+	fill: #e6b8b8;
+}
