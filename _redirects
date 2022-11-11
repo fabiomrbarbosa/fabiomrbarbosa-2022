@@ -1,1 +1,2 @@
+/.well-known/host-meta/* https://social.fabiomrbarbosa.com/.well-known/host-meta/:splat 301
 /.well-known/webfinger/* https://social.fabiomrbarbosa.com/.well-known/webfinger/:splat 301
